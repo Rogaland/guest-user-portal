@@ -15,7 +15,7 @@ apply plugin: 'groovy'
 apply plugin: 'spring-boot'
 
 jar {
-	baseName = 'guest-use-rapi'
+	baseName = 'guest-user-portal'
 	version = '0.0.1-SNAPSHOT'
 }
 sourceCompatibility = 1.8
@@ -23,12 +23,14 @@ targetCompatibility = 1.8
 
 repositories {
 	mavenCentral()
-	mavenLocal()
+	maven {
+		url "http://dl.bintray.com/rfkikt/maven"
+	}
 }
 
 
 dependencies {
-	compile('no.rogfk:ldap-utilities:0.0.1-SNAPSHOT')
+	compile ('no.rogk:rfk-ldap-utilities:0.0.1')
 	compile('org.springframework.boot:spring-boot-devtools')
 	compile('org.projectlombok:lombok:1.16.6')
 	compile('org.springframework.boot:spring-boot-starter-web')
