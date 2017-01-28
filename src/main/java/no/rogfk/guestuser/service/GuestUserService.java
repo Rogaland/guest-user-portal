@@ -46,10 +46,6 @@ public class GuestUserService {
     }
 
     public void historizeGuestUser(GuestUser guestUser) {
-        // TODO: 22.01.2017  Move user to historical ou:
-        //  1. Make sure we got the latest version of the guest
-        //  2. Create user in historical ou
-        //  3. Delete user in todays ou
 
         GuestUser histGuestUser = GuestUser.newInstance(guestUser);
 

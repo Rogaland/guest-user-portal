@@ -2,7 +2,6 @@ package no.rogfk.guestuser;
 
 
 import com.google.common.base.Predicates;
-import no.rogfk.guestuser.model.GuestUser;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.PathSelectors;

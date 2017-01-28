@@ -19,7 +19,7 @@ import java.util.Collection;
 @RestController
 @Api(tags = "GuesUserAdmin")
 @CrossOrigin()
-@RequestMapping(value = "/admin/guest")
+@RequestMapping(value = "/api/admin/guest")
 public class AdminController {
 
     @Autowired
@@ -48,6 +48,15 @@ public class AdminController {
     public ResponseEntity historizeAllGuests() {
 
         historyService.historizeAllGuests();
+        return ResponseEntity.ok().build();
+    }
+
+    @ApiOperation("Historize yesterdays guests")
+    @RequestMapping(value = "today",
+            method = RequestMethod.POST)
+    public ResponseEntity historizeOldGuests() {
+
+        historyService.historizeOldGuests();
         return ResponseEntity.ok().build();
     }
 

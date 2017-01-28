@@ -9,21 +9,18 @@ import javax.naming.Name;
 @Service
 public class ConfigService {
 
+    @Value("${rfk.guest.search.min-query-length:3}")
+    public int minQueryLength;
     @Value("${rfk.ldap.url}")
     private String ldapHostUrl;
-
     @Value("${rfk.ldap.user}")
     private String ldapUser;
-
     @Value("${rfk.ldap.password}")
     private String ldapPassword;
-
     @Value("${rfk.guest.base-container}")
     private String guestBaseContainer;
-
     @Value("${rfk.guest.historical-container}")
     private String histGuestContainer;
-
     @Value("${rfk.guest.today-container}")
     private String todaysGuestContainer;
 
@@ -52,5 +49,9 @@ public class ConfigService {
 
     public Name getTodaysGuestBase() {
         return LdapNameBuilder.newInstance(String.format(todaysGuestContainer, guestBaseContainer)).build();
+    }
+
+    public int getMinQueryLength() {
+        return minQueryLength;
     }
 }

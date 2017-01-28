@@ -15,11 +15,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @Api(tags = "GuestUser")
 @CrossOrigin()
-@RequestMapping(value = "/guest")
+@RequestMapping(value = "/api/guest")
 public class GuestUserController {
 
     @Autowired
     GuestUserService guestUserService;
+
     @ApiOperation("Request new guest user")
     @RequestMapping(value = "user",
             method = RequestMethod.POST,
@@ -29,7 +30,7 @@ public class GuestUserController {
         log.info("GuestUser: {}", guestUser);
 
         guestUserService.create(guestUser);
-        return new ResponseEntity<String>(HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
 
 
     }
