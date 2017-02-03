@@ -1,0 +1,28 @@
+spring:
+rfk:
+  ldap:
+    url:
+    user:
+    password:
+  guest:
+    base-container:
+    historical-container:
+    today-container:
+  message:
+    sms:
+      guest: "Velkommen som gjest hos Rogaland fylkeskommune.\nDu kan koble deg til trådløst nettverk ved å velge RFK-GJEST. Brukernavn:\n%s Passord: %s"
+      host: "Din gjest %s er kommet. Vennligst hent vedkommende i resepsjonen"
+    ui:
+      unable-to-notify-host: "Vi fikk ikke kontakt med %s. Vennligst kontakt resepsjonen."
+      host-notified: "Vi har gitt beskjed til %s at du er kommet. Vennligst vent så kommer de å møter deg."
+
+sms:
+ mode: "SEND_IMMEDIATELY"
+ rest:
+  endpoint:
+  mobileparameter: "sMobileNumber"
+  messageparameter: "sMessage"
+  userparameter: "sUser"
+  user:
+  passwordparameter: "sPass"
+  password:
