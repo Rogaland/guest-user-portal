@@ -1,0 +1,3 @@
+rootProject.name = 'guest-user-portal'
+include 'guest-user-portal-backend'
+include 'guest-user-portal-frontend'
