@@ -9,7 +9,7 @@ class EmployeeServiceSpec extends Specification {
     def "Search for employee"() {
         given:
         def ldapTemplate = Mock(LdapTemplate)
-        def employeeService = new EmployeeService(ldapTemplate: ldapTemplate)
+        def employeeService = new EmployeeSearchService(ldapTemplate: ldapTemplate)
 
         when:
         employeeService.search("bladi")
@@ -20,7 +20,7 @@ class EmployeeServiceSpec extends Specification {
 
     def "Convert to like string"() {
         given:
-        def employeeService = new EmployeeService()
+        def employeeService = new EmployeeSearchService()
         def s = "Ola Flytt"
 
         when:

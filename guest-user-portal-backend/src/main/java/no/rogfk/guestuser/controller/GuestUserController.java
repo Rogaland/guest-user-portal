@@ -3,7 +3,10 @@ package no.rogfk.guestuser.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import no.rogfk.guestuser.exception.GuestAllreadyRegisteredException;
+import no.rogfk.guestuser.model.ErrorResponse;
 import no.rogfk.guestuser.model.GuestUser;
+import no.rogfk.guestuser.model.GuestUserCreateStatus;
 import no.rogfk.guestuser.service.GuestUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,13 +29,22 @@ public class GuestUserController {
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
-    public ResponseEntity<String> createGuestUser(@ModelAttribute GuestUser guestUser) {
+    public ResponseEntity createGuestUser(@ModelAttribute GuestUser guestUser,
+                                                                 @RequestParam(value = "notifyHost", defaultValue = "false") Boolean notifyHost) {
         log.info("GuestUser: {}", guestUser);
+        GuestUserCreateStatus guestUserCreateStatus = guestUserService.create(guestUser, notifyHost);
+        if (guestUserCreateStatus != null) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(guestUserCreateStatus);
+        }
 
-        guestUserService.create(guestUser);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        throw new GuestAllreadyRegisteredException("Du er allerede registrert som gjest.");
 
 
+    }
+
+    @ExceptionHandler(GuestAllreadyRegisteredException.class)
+    public ResponseEntity handleGuestAllreadyRegisteredFound(Exception e) {
+        return ResponseEntity.status(HttpStatus.FOUND).body(new ErrorResponse(e.getMessage()));
     }
 
 

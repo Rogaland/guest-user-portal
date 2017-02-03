@@ -17,6 +17,9 @@ public class GuestUserObjectService {
     @Autowired
     ConfigService configService;
 
+    @Autowired
+    PasswordService passwordService;
+
     public void setupTodaysGuestUser(GuestUser guestUser) {
 
         if (guestUser.getMobile() == null || guestUser.getMobile().isEmpty()) {
@@ -31,6 +34,7 @@ public class GuestUserObjectService {
         guestUser.setCn(guestUser.getMobile());
         guestUser.setDn(dn);
         guestUser.setLoginDisabled(false);
+        guestUser.setPassword(passwordService.generatePassword());
     }
 
     public void setupHistoricalGuestUser(GuestUser guestUser) {

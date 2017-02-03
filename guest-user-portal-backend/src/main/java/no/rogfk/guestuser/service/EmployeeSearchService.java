@@ -1,6 +1,6 @@
 package no.rogfk.guestuser.service;
 
-import no.rogfk.guestuser.model.Employee;
+import no.rogfk.guestuser.model.EmployeeSearch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import java.util.List;
 import static org.springframework.ldap.query.LdapQueryBuilder.query;
 
 @Service
-public class EmployeeService {
+public class EmployeeSearchService {
 
     @Autowired
     LdapTemplate ldapTemplate;
@@ -19,12 +19,12 @@ public class EmployeeService {
     private SearchControls searchControls;
 
 
-    public EmployeeService() {
+    public EmployeeSearchService() {
         searchControls = new SearchControls();
         searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
     }
 
-    public List<Employee> search(String searchString) {
+    public List<EmployeeSearch> search(String searchString) {
 
         return ldapTemplate.find(query().base("ou=ansatt,ou=personer,o=rfk-meta")
                         .where("fullname")
@@ -33,7 +33,7 @@ public class EmployeeService {
                         .is("ON")
                         .and("cn")
                         .not().like("*_*"),
-                Employee.class
+                EmployeeSearch.class
         );
     }
 

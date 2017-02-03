@@ -10,7 +10,7 @@ import javax.naming.Name;
 
 @Data
 @Entry(objectClasses = {"inetOrgPerson", "organizationalPerson", "person", "top", "brfkInfo"})
-public final class Employee {
+public final class EmployeeSearch {
 
     @Id
     @ApiModelProperty(value = "This will be automatically constructed", hidden = true)
@@ -21,9 +21,6 @@ public final class Employee {
 
     @Attribute(name = "brfkDisplayNameLocation")
     private String department;
-
-    @Attribute(name = "mobile")
-    private String mobile;
 
     public String getDn() {
         return dn.toString();

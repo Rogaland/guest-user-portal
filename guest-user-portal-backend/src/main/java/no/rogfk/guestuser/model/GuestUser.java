@@ -36,11 +36,15 @@ public class GuestUser {
     @Attribute(name = "mail")
     private String mail;
 
-    @Attribute(name = "loginDisabled")
-    private boolean loginDisabled;
+    @Attribute(name = "userPassword")
+    private String password;
 
     @Attribute(name = "brfkOwner")
     private Name owner;
+
+    @ApiModelProperty(value = "This will be automatically set", hidden = true)
+    @Attribute(name = "loginDisabled")
+    private boolean loginDisabled;
 
     @Attribute(name = "brfkGuestDateOfVisit")
     @ApiModelProperty(value = "This will be automatically generated", hidden = true)
@@ -151,5 +155,11 @@ public class GuestUser {
         this.loginDisabled = loginDisabled;
     }
 
+    public String getPassword() {
+        return password;
+    }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
