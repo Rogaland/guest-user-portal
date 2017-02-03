@@ -45,7 +45,7 @@ public class GuestUserService {
         return false;
     }
 
-    public void historizeGuestUser(GuestUser guestUser) {
+    public GuestUser historizeGuestUser(GuestUser guestUser) {
 
         GuestUser histGuestUser = GuestUser.newInstance(guestUser);
 
@@ -53,6 +53,8 @@ public class GuestUserService {
 
         ldapTemplate.create(histGuestUser);
         ldapTemplate.delete(guestUser);
+
+        return histGuestUser;
     }
 
     public List<GuestUser> getTodaysGuests() {

@@ -19,7 +19,7 @@ public class GuestUserObjectService {
 
     public void setupTodaysGuestUser(GuestUser guestUser) {
 
-        if (guestUser.getMobile().isEmpty() || guestUser.getMobile() == null) {
+        if (guestUser.getMobile() == null || guestUser.getMobile().isEmpty()) {
             throw new MissingMandatoryAttribute("Missing mobile phone.");
         }
 
