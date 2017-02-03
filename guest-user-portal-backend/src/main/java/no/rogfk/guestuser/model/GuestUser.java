@@ -1,4 +1,4 @@
-package main.java.no.rogfk.guestuser.model;
+package no.rogfk.guestuser.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

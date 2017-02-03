@@ -1,7 +1,7 @@
-package main.java.no.rogfk.guestuser.service;
+package no.rogfk.guestuser.service;
 
 import lombok.extern.slf4j.Slf4j;
-import main.java.no.rogfk.guestuser.model.GuestUser;
+import no.rogfk.guestuser.model.GuestUser;
 import no.rogfk.ldap.utilities.LdapTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import java.util.List;
 public class HistoryService {
 
     @Autowired
-    GuestUserService guestUserService;
+    no.rogfk.guestuser.service.GuestUserService guestUserService;
 
     public void historizeAllGuests() {
         List<GuestUser> guestUsers = guestUserService.getTodaysGuests();

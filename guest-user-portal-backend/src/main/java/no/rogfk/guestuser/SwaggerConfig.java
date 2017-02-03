@@ -1,4 +1,4 @@
-package main.java.no.rogfk.guestuser;
+package no.rogfk.guestuser;
 
 
 import com.google.common.base.Predicates;

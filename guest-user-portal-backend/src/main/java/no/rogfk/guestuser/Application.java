@@ -1,4 +1,4 @@
-package main.java.no.rogfk.guestuser;
+package no.rogfk.guestuser;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

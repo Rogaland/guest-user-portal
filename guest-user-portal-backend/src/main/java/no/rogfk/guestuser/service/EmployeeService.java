@@ -1,6 +1,6 @@
-package main.java.no.rogfk.guestuser.service;
+package no.rogfk.guestuser.service;
 
-import main.java.no.rogfk.guestuser.model.Employee;
+import no.rogfk.guestuser.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.stereotype.Service;

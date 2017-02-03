@@ -1,4 +1,4 @@
-package main.java.no.rogfk.guestuser.exception;
+package no.rogfk.guestuser.exception;
 
 public class MissingMandatoryAttribute extends RuntimeException {
     public MissingMandatoryAttribute(String message) {

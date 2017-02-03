@@ -1,10 +1,10 @@
-package main.java.no.rogfk.guestuser.controller;
+package no.rogfk.guestuser.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import main.java.no.rogfk.guestuser.model.GuestUser;
-import main.java.no.rogfk.guestuser.service.GuestUserService;
+import no.rogfk.guestuser.model.GuestUser;
+import no.rogfk.guestuser.service.GuestUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

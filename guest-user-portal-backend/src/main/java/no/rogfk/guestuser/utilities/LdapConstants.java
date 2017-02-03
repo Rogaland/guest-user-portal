@@ -1,4 +1,4 @@
-package main.java.no.rogfk.guestuser.utilities;
+package no.rogfk.guestuser.utilities;
 
 public class LdapConstants {
     public static final String O = "o";

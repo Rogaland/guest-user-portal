@@ -1,12 +1,12 @@
-package main.java.no.rogfk.guestuser.controller;
+package no.rogfk.guestuser.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import main.java.no.rogfk.guestuser.exception.QueryStringTooShort;
-import main.java.no.rogfk.guestuser.model.Employee;
-import main.java.no.rogfk.guestuser.service.ConfigService;
-import main.java.no.rogfk.guestuser.service.EmployeeService;
+import no.rogfk.guestuser.exception.QueryStringTooShort;
+import no.rogfk.guestuser.model.Employee;
+import no.rogfk.guestuser.service.ConfigService;
+import no.rogfk.guestuser.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

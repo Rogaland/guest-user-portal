@@ -1,11 +1,8 @@
-package test.groovy.no.rogfk.guestuser.service
+package no.rogfk.guestuser.service
 
-import main.java.no.rogfk.guestuser.model.Employee
 import org.springframework.ldap.core.LdapTemplate
 import org.springframework.ldap.query.LdapQuery
-import org.springframework.ldap.query.LdapQueryBuilder
 import spock.lang.Specification
-
 
 class EmployeeServiceSpec extends Specification {
 

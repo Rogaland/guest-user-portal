@@ -1,6 +1,6 @@
-package main.java.no.rogfk.guestuser.service;
+package no.rogfk.guestuser.service;
 
-import main.java.no.rogfk.guestuser.model.GuestUser;
+import no.rogfk.guestuser.model.GuestUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.support.LdapNameBuilder;
@@ -27,10 +27,15 @@ public class GuestUserService {
         searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
     }
 
-    public boolean create(GuestUser guestUser) {
+    public boolean create(GuestUser guestUser, boolean notifyHost) {
         guestUserObjectService.setupTodaysGuestUser(guestUser);
         if (!exists(guestUser.getDn())) {
             ldapTemplate.create(guestUser);
+
+            // Add sms:
+            // - to guest
+            // - to host
+
             return true;
         }
         return false;

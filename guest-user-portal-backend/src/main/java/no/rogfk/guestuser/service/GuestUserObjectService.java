@@ -1,7 +1,7 @@
-package main.java.no.rogfk.guestuser.service;
+package no.rogfk.guestuser.service;
 
 import no.rogfk.guestuser.exception.MissingMandatoryAttribute;
-import main.java.no.rogfk.guestuser.model.GuestUser;
+import no.rogfk.guestuser.model.GuestUser;
 import no.rogfk.guestuser.utilities.LdapConstants;
 import no.rogfk.ldap.utilities.LdapTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;

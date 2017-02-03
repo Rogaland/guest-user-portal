@@ -1,7 +1,7 @@
-package test.groovy.no.rogfk.guestuser.service
+package no.rogfk.guestuser.service
 
-import main.java.no.rogfk.guestuser.exception.MissingMandatoryAttribute
-import main.java.no.rogfk.guestuser.model.GuestUser
+import no.rogfk.guestuser.exception.MissingMandatoryAttribute
+import no.rogfk.guestuser.model.GuestUser
 import spock.lang.Specification
 
 class GuestUserObjectServiceSpec extends Specification {

@@ -1,4 +1,4 @@
-package main.java.no.rogfk.guestuser.exception;
+package no.rogfk.guestuser.exception;
 
 public class QueryStringTooShort extends RuntimeException {
     public QueryStringTooShort(String message) {

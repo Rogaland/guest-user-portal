@@ -1,4 +1,4 @@
-package main.java.no.rogfk.guestuser.service;
+package no.rogfk.guestuser.service;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ldap.support.LdapNameBuilder;

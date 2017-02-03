@@ -1,7 +1,7 @@
-package main.java.no.rogfk.guestuser;
+package no.rogfk.guestuser;
 
 
-import main.java.no.rogfk.guestuser.service.ConfigService;
+import no.rogfk.guestuser.service.ConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
