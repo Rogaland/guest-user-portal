@@ -29,7 +29,7 @@ public class GuestUserController {
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
-    public ResponseEntity createGuestUser(@ModelAttribute GuestUser guestUser,
+    public ResponseEntity createGuestUser(@RequestBody GuestUser guestUser,
                                                                  @RequestParam(value = "notifyHost", defaultValue = "false") Boolean notifyHost) {
         log.info("GuestUser: {}", guestUser);
         GuestUserCreateStatus guestUserCreateStatus = guestUserService.create(guestUser, notifyHost);

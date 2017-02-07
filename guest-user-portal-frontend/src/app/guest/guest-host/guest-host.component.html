@@ -1,0 +1,17 @@
+
+<form id="signup-form" name="signup" class="form-horizontal">
+    <div class="form-group col-xs-12">
+        <input type="text" class="form-control" (keyup)="search()" name="visit" [(ngModel)]="formData.owner" placeholder="Skriv inn navnet på den du skal besøke.">
+        <select class="form-control" size="10">
+    <option *ngFor="let e of visiting" value="{{e.dn}}">{{e.fullname}} ({{e.department}})</option>
+</select>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-6 col-xs-offset-3">
+            <a [routerLink]="['../confirmation']" (click)="save()" class="btn btn-block btn-info" style="background: rgb(0,152,216)">
+    Neste <span class="glyphicon glyphicon-circle-arrow-right"></span>
+</a>
+        </div>
+    </div>
+</form>
