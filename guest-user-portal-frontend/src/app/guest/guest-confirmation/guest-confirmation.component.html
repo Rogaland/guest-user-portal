@@ -1,15 +1,17 @@
 <div class="text-center">
     <h3>Velkommen</h3>
-    <!--<p>
-        Vi har nå informert {{formData.givenname}} {{formData.sn}} om at du er kommet.
+    <p>
+        {{confirmationResult.message}}
+    </p>
+    <p *ngIf="confirmationResult.hostNotifyStatus && confirmationResult.hostNotifyStatus !== 'NOTIFIED'">
+        Vi fikk ikke kontakt med den du skal besøke. Vennligst gå til resepsjonen.
+    </p>
+    <p>
         Du vil få en SMS med påloggingsinformasjon til trådløst nettverk.
-    </p>-->
+    </p>
     <div class="form-group" style="margin-top: 30px;">
         <div class="col-xs-6 col-xs-offset-3">
-            <a [routerLink]="['../']" ng-click="clearFormData()" class="btn btn-block btn-info" style="background: rgb(0,152,216)">
-                Ferdig <span class="glyphicon glyphicon-circle-arrow-right"></span>
-            </a>
+            <button class="btn btn-primary btn-block" (click)="next()">Ferdig <span class="glyphicon glyphicon-circle-arrow-right"></span></button>
         </div>
     </div>
-    <!--<button type="submit" class="btn" style="background: rgb(0,152,216); color: white;">Ferdig</button>-->
 </div>

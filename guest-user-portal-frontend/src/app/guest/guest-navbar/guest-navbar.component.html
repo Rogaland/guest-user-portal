@@ -1,15 +1,8 @@
-<!-- views/main.html -->
 <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
-
         <div id="form-container">
-
             <div style="margin-bottom: 30px; margin-top: 30px;">
-
-
                 <img src="assets/rogfk_liggende_farger.jpg" height="75" width="261" />
-
-
             </div>
 
             <div style="text-align:center;">
@@ -40,21 +33,15 @@
                 </div>
             </div>
         </div>
-
-        <!-- use ng-submit to catch the form submission and use our Angular function -->
-
-        <form id="signup-form" name="signup" class="form-horizontal">
-
-            <!-- our nested state views will be injected here -->
-            <div id="form-views" ui-view></div>
-        </form>
-
     </div>
-
-    <!-- show our formData as it is being typed
-    <pre>
-        {{ formData}}
-    </pre>
--->
-
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-default pull-right" (click)="abort()">Avbryt</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+      &nbsp;
+    </div>
 </div>

@@ -1,3 +1,4 @@
+import {FormData} from '../form-data';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { FormDataService } from '../form-data.service';
 import { Router } from '@angular/router';
@@ -7,23 +8,16 @@ import { Router } from '@angular/router';
   templateUrl: './guest-visitor.component.html',
   styleUrls: ['./guest-visitor.component.css']
 })
-export class GuestVisitorComponent implements OnInit, OnDestroy {
-
-  @Input() formData;
+export class GuestVisitorComponent {
 
   constructor(private formDataService: FormDataService,
-              private router: Router) { }
+    private router: Router) { }
 
-  ngOnInit() {
-    this.formData = this.formDataService.getData();
-  }
-
-  ngOnDestroy() {
-    this.formDataService.setData(this.formData);
+  get formData(): FormData {
+    return this.formDataService.getData();
   }
 
   next() {
-    console.log('go next');
     this.router.navigate(['/host']);
   }
 }

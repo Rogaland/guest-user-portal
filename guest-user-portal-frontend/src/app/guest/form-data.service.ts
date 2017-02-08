@@ -10,23 +10,34 @@ import 'rxjs/add/operator/catch';
 export class FormDataService {
 
     private formData: FormData = new FormData();
+    private _confirmationResult: any;
 
-    constructor(private http: Http) { };
+    constructor(private http: Http) {};
+
+    set confirmationResult(co: any) {
+        this._confirmationResult = co;
+    }
+    get confirmationResult() {
+        return this._confirmationResult;
+    }
 
     getData(): FormData {
         return this.formData;
     }
 
     setData(formData: FormData) {
-        console.log('setting form data: ' + JSON.stringify(formData));
         this.formData = formData;
     }
 
-    create(data: any): Observable<FormData> {
-        let url = '/api/guest/user';
+    clearData() {
+        this.formData = new FormData();
+    }
+
+    create(): Observable<FormData> {
+        const url = '/api/guest/user?notifyHost=true';
         return this.http
-            .post(url, data)
-            .map(res => res.json().data)
+            .post(url, this.formData)
+            .map(res => res.json())
             .catch(this.handleError);
     }
 

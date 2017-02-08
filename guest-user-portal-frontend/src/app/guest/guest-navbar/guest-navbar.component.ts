@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { FormDataService } from '../form-data.service';
+import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-guest-navbar',
   templateUrl: './guest-navbar.component.html',
   styleUrls: ['./guest-navbar.component.css']
 })
-export class GuestNavbarComponent implements OnInit {
+export class GuestNavbarComponent {
 
-  constructor() { }
+  constructor(private router: Router, private formDataService: FormDataService) { }
 
-  ngOnInit() {
+  abort() {
+    this.formDataService.clearData();
+    this.router.navigate(['/']);
   }
-
 }

@@ -1,3 +1,4 @@
+import { FormDataService } from './form-data.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GuestRoutingModule } from './guest-routing.module';
@@ -14,6 +15,7 @@ import { FormsModule } from '@angular/forms';
     GuestRoutingModule,
     FormsModule
   ],
-  declarations: [GuestComponent, GuestVisitorComponent, GuestNavbarComponent, GuestHostComponent, GuestConfirmationComponent]
+  declarations: [GuestComponent, GuestVisitorComponent, GuestNavbarComponent, GuestHostComponent, GuestConfirmationComponent],
+  providers: [FormDataService]
 })
 export class GuestModule { }
