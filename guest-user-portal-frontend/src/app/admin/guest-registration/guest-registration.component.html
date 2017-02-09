@@ -1,0 +1,84 @@
+<div class="row" style="margin-bottom: 30px; margin-top: 30px;">
+  <div class="col-sm-7 col-sm-offset-2">
+    <form id="signup-form" name="signup" class="form-horizontal" #f="ngForm" autocomplete="off">
+      <div class="form-group">
+        <label for="firstName" class="col-sm-3 control-label">Fornavn</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="firstName" [(ngModel)]="guestUser.firstName" placeholder="Fornavn" required
+            #firstName="ngModel">
+            <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+              <div [hidden]="!firstName.errors.required">
+                Du må skrive et fornavn.
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lastName" class="col-sm-3 control-label">Etternavn</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="lastName" [(ngModel)]="guestUser.lastName" placeholder="Etternavn" required
+            #lastName="ngModel">
+            <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)" class="alert alert-danger">
+              <div [hidden]="!lastName.errors.required">
+                Du må skrive et etternavn.
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="organization" class="col-sm-3 control-label">Organisasjon</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="org" [(ngModel)]="guestUser.organization" placeholder="Organisasjon" required
+            #organization="ngModel">
+            <div *ngIf="organization.errors && (organization.dirty || organization.touched)" class="alert alert-danger">
+              <div [hidden]="!organization.errors.required">
+                Du må skrive navn på organisasjon.
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="mobile" class="col-sm-3 control-label">Mobil</label>
+        <div class="col-sm-9">
+          <input type="tel" class="form-control" name="mobile" [(ngModel)]="guestUser.mobile" placeholder="Mobilnummer" required minlength="8"
+            maxlength="8" #mobile="ngModel">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="dateOfVisit" class="col-sm-3 control-label">Besøksdato</label>
+        <div class="col-sm-9">
+          <input type="text" disabled="disabled" class="form-control" name="dateOfVisit" placeholder="Besøksdato" required value="{{ today | date}}">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-12">
+          <input type="text" class="form-control" (keyup)="search()" name="visit" [(ngModel)]="searchField" placeholder="Vertskap">
+          <select class="form-control" size="10" required name="searchResults">
+            <option *ngFor="let e of visiting" value="{{e.dn}}" (click)="selected(e)">{{e.fullname}} ({{e.department}})
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-12">
+            <label>
+              Varsle vertskap? <input type="checkbox" id="cbox1" name="cbox1" [(ngModel)]="notifyHost">
+            </label>
+        </div>
+
+      </div>
+
+      <div class="form-group" style="margin-top: 30px;">
+        <div class="col-xs-3 col-xs-offset-3">
+          <button (click)="cancel()" class="btn btn-default btn-block" value="Avbryt">Avbryt</button>
+        </div>
+        <div class="col-xs-3">
+          <button (click)="register()" [disabled]="!f.valid" class="btn btn-primary btn-block" value="Neste">Registrer <span
+          class="fa fa-user-plus"></span></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

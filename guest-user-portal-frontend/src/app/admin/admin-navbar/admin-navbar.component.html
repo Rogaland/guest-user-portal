@@ -1,0 +1,79 @@
+<nav class="navbar" id="navbar">
+  <div class="container-fluid">
+    <div class="navbar-collapse collapse in">
+      <ul class="nav navbar-nav navbar-mobile">
+        <!--<li>
+          <button type="button" class="sidebar-toggle">
+            <i class="fa fa-bars"></i>
+          </button>
+        </li>-->
+        <li class="logo">
+          <a class="navbar-brand" href="#"> Admin</a>
+        </li>
+        <li>
+          <button type="button" class="navbar-toggle">
+            <img class="profile-img" src="./assets/images/rogfk.jpg">
+          </button>
+        </li>
+      </ul>
+      <!--<ul class="nav navbar-nav navbar-left">
+        <li class="navbar-title">Dashboard</li>
+        <li class="navbar-search hidden-sm">
+          <input id="search" type="text" placeholder="Search.." autocomplete="off">
+          <button class="btn-search"><i class="fa fa-search"></i></button>
+        </li>
+      </ul>-->
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown profile">
+          <a class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-bars"></i>
+          </a>
+          <div class="dropdown-menu">
+            <div class="profile-info">
+              <h4 class="username">Innstillinger</h4>
+            </div>
+            <ul class="action">
+              <li>
+                <a (click)="archiveGuests()">
+                  Arkivér tidligere gjester
+                </a>
+              </li>
+              <li>
+                <a (click)="archiveAllGuests()">
+                  Arkivér ALLE gjester
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="row">
+  <div class="col-xs-6">
+      <a class="card card-banner card-green-light" routerLink="./">
+        <div class="card-body">
+          <i class="icon fa fa-user fa-4x"></i>
+          <div class="content">
+            <div class="title">Dagens Gjester</div>
+            <div class="value">{{guests}}</div>
+          </div>
+        </div>
+      </a>
+  </div>
+  <div class="col-xs-6">
+    <a class="card card-banner card-yellow-light" routerLink="./historical">
+      <div class="card-body">
+        <i class="icon fa fa-users fa-4x"></i>
+        <div class="content">
+          <div class="title">Tidligere gjester</div>
+          <div class="value">&nbsp;</div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

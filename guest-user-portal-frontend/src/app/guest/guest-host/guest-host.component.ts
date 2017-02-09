@@ -1,8 +1,8 @@
-import {FormData} from '../form-data';
+import {GuestUser} from '../guest-user';
 import { error } from 'util';
 import { EmployeeSearch } from 'app/shared/employee-search';
 import { Component } from '@angular/core';
-import { FormDataService } from '../form-data.service';
+import { GuestUserService } from '../guest-user.service';
 import { EmployeeSearchService } from 'app/shared/employee-search.service';
 import { Router } from '@angular/router';
 
@@ -17,23 +17,23 @@ export class GuestHostComponent {
   private searchField: string;
   private errorMessage: string;
 
-  constructor(private formDataService: FormDataService,
+  constructor(private guestUserService: GuestUserService,
     private employeeSearchService: EmployeeSearchService,
     private router: Router) { }
 
-    get formData(): FormData {
-    return this.formDataService.getData();
+  get guestUser(): GuestUser {
+    return this.guestUserService.getData();
   }
 
   save() {
-    this.formDataService.create().subscribe(result => {
-      this.formDataService.confirmationResult = result;
+    this.guestUserService.create(true, true, null).subscribe(result => {
+      this.guestUserService.confirmationResult = result;
       this.router.navigate(['/confirmation']);
     },
       err => {
         const body = JSON.parse(err._body);
         if (err.status === 302) {
-          this.formDataService.confirmationResult = body;
+          this.guestUserService.confirmationResult = body;
           // User is registered already. Proceed to confirmation page.
           this.router.navigate(['/confirmation']);
         }
@@ -48,6 +48,6 @@ export class GuestHostComponent {
   }
 
   selected(dn: EmployeeSearch) {
-    this.formData.owner = dn.dn;
+    this.guestUser.owner = dn.dn;
   }
 }

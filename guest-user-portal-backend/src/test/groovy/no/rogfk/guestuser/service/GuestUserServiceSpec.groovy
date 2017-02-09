@@ -1,6 +1,5 @@
 package no.rogfk.guestuser.service
 
-import com.sun.xml.internal.ws.api.ha.StickyFeature
 import no.rogfk.guestuser.model.GuestUser
 import no.rogfk.sms.SmsService
 import org.springframework.ldap.NameNotFoundException
@@ -36,8 +35,8 @@ class GuestUserServiceSpec extends Specification {
         def guestUser2 = new GuestUser(mobile: "11111111")
 
         when:
-        def created1 = guestUserService.create(guestUser1, false)
-        def created2 = guestUserService.create(guestUser2, false)
+        def created1 = guestUserService.create(guestUser1, false, notifyGuest)
+        def created2 = guestUserService.create(guestUser2, false, notifyGuest)
 
         then:
         created1 != null

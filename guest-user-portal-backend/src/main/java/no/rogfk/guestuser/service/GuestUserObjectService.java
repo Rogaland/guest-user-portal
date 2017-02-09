@@ -30,7 +30,9 @@ public class GuestUserObjectService {
                 configService.getTodaysGuestBase()).add(LdapConstants.CN, guestUser.getMobile()
         ).build();
 
-        guestUser.setDateOfVisit(LdapTimestamp.getTimestampString());
+        if(guestUser.getDateOfVisit() == null || guestUser.getDateOfVisit().isEmpty()){
+            guestUser.setDateOfVisit(LdapTimestamp.getTimestampString());
+        }
         guestUser.setCn(guestUser.getMobile());
         guestUser.setDn(dn);
         guestUser.setLoginDisabled(false);

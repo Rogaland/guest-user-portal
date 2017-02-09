@@ -1,4 +1,4 @@
-export class FormData {
+export class GuestUser {
     firstName: string;
     lastName: string;
     organization: string;

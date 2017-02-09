@@ -1,6 +1,6 @@
-import {FormData} from '../form-data';
+import {GuestUser} from '../guest-user';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormDataService } from '../form-data.service';
+import { GuestUserService } from '../guest-user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -10,24 +10,24 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class GuestConfirmationComponent implements OnDestroy, OnInit {
 
-  constructor(private formDataService: FormDataService,
+  constructor(private guestUserService: GuestUserService,
     private router: Router,
     private route: ActivatedRoute) { }
 
   get confirmationResult() {
-    return this.formDataService.confirmationResult || {};
+    return this.guestUserService.confirmationResult || {};
   }
 
-  get formData(): FormData {
-    return this.formDataService.getData();
+  get guestUser(): GuestUser {
+    return this.guestUserService.getData();
   }
 
   ngOnDestroy() {
-    this.formDataService.clearData();
+    this.guestUserService.clearData();
   }
 
   next() {
-    this.formDataService.clearData();
+    this.guestUserService.clearData();
     this.router.navigate(['/']);
   }
 

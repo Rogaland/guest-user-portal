@@ -1,6 +1,6 @@
-import {FormData} from '../form-data';
+import {GuestUser} from '../guest-user';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { FormDataService } from '../form-data.service';
+import { GuestUserService } from '../guest-user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
 })
 export class GuestVisitorComponent {
 
-  constructor(private formDataService: FormDataService,
+  constructor(private guestUserService: GuestUserService,
     private router: Router) { }
 
-  get formData(): FormData {
-    return this.formDataService.getData();
+  get guestUser(): GuestUser {
+    return this.guestUserService.getData();
   }
 
   next() {

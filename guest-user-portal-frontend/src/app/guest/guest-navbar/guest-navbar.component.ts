@@ -1,4 +1,4 @@
-import { FormDataService } from '../form-data.service';
+import { GuestUserService } from '../guest-user.service';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
@@ -9,10 +9,10 @@ import { Component } from '@angular/core';
 })
 export class GuestNavbarComponent {
 
-  constructor(private router: Router, private formDataService: FormDataService) { }
+  constructor(private router: Router, private guestUserService: GuestUserService) { }
 
   abort() {
-    this.formDataService.clearData();
+    this.guestUserService.clearData();
     this.router.navigate(['/']);
   }
 }

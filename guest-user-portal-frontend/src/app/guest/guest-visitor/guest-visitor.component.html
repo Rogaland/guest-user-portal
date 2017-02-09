@@ -4,7 +4,7 @@
     <div class="form-group">
       <label for="firstName" class="col-sm-3 control-label">Fornavn</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" name="firstName" [(ngModel)]="formData.firstName"
+        <input type="text" class="form-control" name="firstName" [(ngModel)]="guestUser.firstName"
                placeholder="Skriv inn fornavnet ditt"
                required #firstName="ngModel">
         <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)" class="alert alert-danger">
@@ -17,7 +17,7 @@
     <div class="form-group">
       <label for="lastName" class="col-sm-3 control-label">Etternavn</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" name="lastName" [(ngModel)]="formData.lastName"
+        <input type="text" class="form-control" name="lastName" [(ngModel)]="guestUser.lastName"
                placeholder="Skriv inn etternavnet ditt"
                required #lastName="ngModel">
         <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)" class="alert alert-danger">
@@ -30,7 +30,7 @@
     <div class="form-group">
       <label for="organization" class="col-sm-3 control-label">Organisasjon</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" name="org" [(ngModel)]="formData.organization"
+        <input type="text" class="form-control" name="org" [(ngModel)]="guestUser.organization"
                placeholder="Skriv inn navnet på organisasjonen du kommer fra"
                required #organization="ngModel">
         <div *ngIf="organization.errors && (organization.dirty || organization.touched)" class="alert alert-danger">
@@ -43,7 +43,7 @@
     <div class="form-group">
       <label for="mobile" class="col-sm-3 control-label">Mobil</label>
       <div class="col-sm-9">
-        <input type="tel" class="form-control" name="mobile" [(ngModel)]="formData.mobile"
+        <input type="tel" class="form-control" name="mobile" [(ngModel)]="guestUser.mobile"
                placeholder="Skriv inn mobiltelefonnummeret ditt"
                required minlength="8" maxlength="8" #mobile="ngModel">
         <!--<div *ngIf="mobile.errors && (mobile.dirty || mobile.touched)" class="alert alert-danger">
@@ -59,7 +59,7 @@
     <!--<div class="form-group">
         <label for="email" class="col-sm-3 control-label">Epost</label>
         <div class="col-sm-9">
-            <input type="email" class="form-control" name="email" [(ngModel)]="formData.mail" placeholder="Skriv inn epost adressen din"
+            <input type="email" class="form-control" name="email" [(ngModel)]="guestUser.mail" placeholder="Skriv inn epost adressen din"
                 required #email="ngModel">
                 <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
                     <div [hidden]="!email.errors.required">

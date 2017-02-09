@@ -36,27 +36,26 @@ public class GuestUserService {
         searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
     }
 
-    public GuestUserCreateStatus create(GuestUser guestUser, boolean notifyHost) {
+    public GuestUserCreateStatus create(GuestUser guestUser, boolean notifyHost, Boolean notifyGuest) {
         GuestUserCreateStatus guestUserCreateStatus = new GuestUserCreateStatus();
 
         guestUserObjectService.setupTodaysGuestUser(guestUser);
 
         if (!exists(guestUser.getDn())) {
             ldapTemplate.create(guestUser);
-
-            notifyGuest(guestUser, guestUserCreateStatus);
-
-            if (notifyHost) {
-                String guestFullname = String.format("%s %s", guestUser.getFirstName(), guestUser.getLastName());
-                employeeNotifyService.notifyEmployee(guestUser.getOwner(), guestFullname, guestUserCreateStatus);
-            } else {
-                guestUserCreateStatus.setHostNotifyStatus(NotifyStatus.NO_NOTIFICATION_NEED);
-            }
-            return guestUserCreateStatus;
         }
 
-        return null;
+        if (notifyGuest) {
+            notifyGuest(guestUser, guestUserCreateStatus);
+        }
 
+        if (notifyHost) {
+            String guestFullname = String.format("%s %s", guestUser.getFirstName(), guestUser.getLastName());
+            employeeNotifyService.notifyEmployee(guestUser.getOwner(), guestFullname, guestUserCreateStatus);
+        } else {
+            guestUserCreateStatus.setHostNotifyStatus(NotifyStatus.NO_NOTIFICATION_NEED);
+        }
+        return guestUserCreateStatus;
     }
 
     private void notifyGuest(GuestUser guestUser, GuestUserCreateStatus guestUserCreateStatus) {
@@ -71,8 +70,7 @@ public class GuestUserService {
                 guestUserCreateStatus.setGuestNotifyStatus(NotifyStatus.UNABLE_TO_NOTIFY);
                 guestUserCreateStatus.setGuestMessage(configService.getUnableToNotifyGuestMessage());
             }
-        }
-        catch (ResourceAccessException e) {
+        } catch (ResourceAccessException e) {
             guestUserCreateStatus.setGuestNotifyStatus(NotifyStatus.UNABLE_TO_NOTIFY);
             guestUserCreateStatus.setGuestMessage(configService.getUnableToNotifyGuestMessage());
         }
