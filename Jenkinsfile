@@ -9,7 +9,7 @@ node {
         }
 
         stage('build') {
-            sh './gradlew clean build'
+            sh './gradlew'
         }
 
         stage('deploy') {

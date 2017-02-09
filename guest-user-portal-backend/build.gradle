@@ -47,10 +47,3 @@ dependencies {
 	testCompile('cglib:cglib-nodep:3.2.4')
 }
 
-
-
-/*
-task wrapper(type: Wrapper) {
-	gradleVersion = '2.12'
-}
-*/
