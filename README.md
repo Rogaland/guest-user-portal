@@ -4,8 +4,8 @@
 
 ## Overview
 This contains of:
-    * Self service app for guests to register them selfs
-    * Admin app to
-        * see todays guest
-        * see historical guests
-        * register a guest
+* Self service app for guests to register them selfs
+* Admin app to
+ * see todays guest
+ * see historical guests
+ * register a guest
