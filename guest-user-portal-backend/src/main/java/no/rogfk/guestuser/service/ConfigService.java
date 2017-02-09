@@ -44,23 +44,13 @@ public class ConfigService {
     @Value("${rfk.message.ui.host-notified}")
     private String hostNotifiedMessage;
 
+    @Value("${rfk.message.ui.unable-to-notify-guest}")
+    private String unableToNotifyGuestMessage;
 
-    public ConfigService() {
-    }
+    @Value("${rfk.message.ui.guest-notified}")
+    private String guestNotifiedMessage;
 
-    /*
-    public String getLdapHostUrl() {
-        return ldapHostUrl;
-    }
 
-    public String getLdapUser() {
-        return ldapUser;
-    }
-
-    public String getLdapPassword() {
-        return ldapPassword;
-    }
-    */
     public Name getGuestBase() {
         return LdapNameBuilder.newInstance(guestBaseContainer).build();
     }
@@ -73,17 +63,5 @@ public class ConfigService {
         return LdapNameBuilder.newInstance(String.format(todaysGuestContainer, guestBaseContainer)).build();
     }
 
-    /*
-    public int getMinQueryLength() {
-        return minQueryLength;
-    }
 
-    public String getGuestMessage() {
-        return guestMessage;
-    }
-
-    public String getHostMessage() {
-        return hostMessage;
-    }
-    */
 }

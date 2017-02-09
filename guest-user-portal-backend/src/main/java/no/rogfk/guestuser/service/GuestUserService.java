@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.support.LdapNameBuilder;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.ResourceAccessException;
 
 import javax.naming.directory.SearchControls;
 import java.util.List;
@@ -60,14 +61,22 @@ public class GuestUserService {
 
     private void notifyGuest(GuestUser guestUser, GuestUserCreateStatus guestUserCreateStatus) {
         String message = String.format(configService.getGuestMessage(), guestUser.getCn(), guestUser.getPassword());
-        String notifyGuestResponse = smsService.sendSms(message, guestUser.getMobile());
+        try {
+            String notifyGuestResponse = smsService.sendSms(message, guestUser.getMobile());
 
-        if (notifyGuestResponse.contains(">true<")) {
-            guestUserCreateStatus.setGuestNotifyStatus(NotifyStatus.NOTIFIED);
+            if (notifyGuestResponse.contains(">true<")) {
+                guestUserCreateStatus.setGuestNotifyStatus(NotifyStatus.NOTIFIED);
+                guestUserCreateStatus.setGuestMessage(configService.getGuestNotifiedMessage());
+            } else {
+                guestUserCreateStatus.setGuestNotifyStatus(NotifyStatus.UNABLE_TO_NOTIFY);
+                guestUserCreateStatus.setGuestMessage(configService.getUnableToNotifyGuestMessage());
+            }
         }
-        else {
+        catch (ResourceAccessException e) {
             guestUserCreateStatus.setGuestNotifyStatus(NotifyStatus.UNABLE_TO_NOTIFY);
+            guestUserCreateStatus.setGuestMessage(configService.getUnableToNotifyGuestMessage());
         }
+
     }
 
 

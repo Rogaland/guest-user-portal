@@ -15,6 +15,8 @@ rfk:
     ui:
       unable-to-notify-host: "Vi fikk ikke kontakt med %s. Vennligst kontakt resepsjonen."
       host-notified: "Vi har gitt beskjed til %s at du er kommet. Vennligst vent så kommer de å møter deg."
+      unable-to-notify-guest: "Du er registert som gjest, men vi får ikke sendt sms med påloggingsinformasjons til deg. Vennligst kontakt resepsjonen."
+      guest-notified: "Du vil få en SMS med påloggingsinformasjon til trådløst nettverk."
 
 sms:
  mode: "SEND_IMMEDIATELY"

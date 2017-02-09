@@ -5,7 +5,8 @@ import lombok.Data;
 @Data
 public class GuestUserCreateStatus {
 
-    private String message;
+    private String guestMessage;
+    private String hostMessage;
     private NotifyStatus hostNotifyStatus;
     private NotifyStatus guestNotifyStatus;
     int timeout = 0;
