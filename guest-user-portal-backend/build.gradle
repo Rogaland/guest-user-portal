@@ -23,6 +23,7 @@ targetCompatibility = 1.8
 
 repositories {
 	mavenCentral()
+	flatDir { dirs '../guest-user-portal-frontend/build/libs' }
 	maven {
 		url "http://dl.bintray.com/rfkikt/maven"
 	}
@@ -30,6 +31,7 @@ repositories {
 
 
 dependencies {
+	compile name: 'guest-user-portal-frontend'
 	compile('no.rogk:rfk-ldap-utilities:0.0.1')
 	compile('org.springframework.boot:spring-boot-devtools')
 	compile('org.projectlombok:lombok:1.16.6')

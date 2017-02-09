@@ -1,6 +1,8 @@
 package no.rogfk.guestuser.service
 
+import com.sun.xml.internal.ws.api.ha.StickyFeature
 import no.rogfk.guestuser.model.GuestUser
+import no.rogfk.sms.SmsService
 import org.springframework.ldap.NameNotFoundException
 import org.springframework.ldap.core.LdapTemplate
 import org.springframework.ldap.support.LdapNameBuilder
@@ -13,13 +15,18 @@ class GuestUserServiceSpec extends Specification {
     private guestUserObjectService
     private ldapTemplate
     private guestUserService
+    private passwordService
+    private smsService
 
     void setup() {
-        configService = new ConfigService(todaysGuestContainer: "o=gjest", histGuestContainer: "o=hist", guestBaseContainer: "o=guest")
-        guestUserObjectService = new GuestUserObjectService(configService: configService)
+        configService = new ConfigService(guestMessage: "hello", hostMessage: "hello", todaysGuestContainer: "o=gjest", histGuestContainer: "o=hist", guestBaseContainer: "o=guest")
+        smsService = Mock(SmsService)
+        passwordService = new PasswordService()
+        guestUserObjectService = new GuestUserObjectService(configService: configService, passwordService: passwordService,)
         ldapTemplate = Mock(LdapTemplate)
         guestUserService = new GuestUserService(configService: configService,
                 guestUserObjectService: guestUserObjectService,
+                smsService: smsService,
                 ldapTemplate: ldapTemplate)
     }
 
@@ -29,14 +36,15 @@ class GuestUserServiceSpec extends Specification {
         def guestUser2 = new GuestUser(mobile: "11111111")
 
         when:
-        def created1 = guestUserService.create(guestUser1)
-        def created2 = guestUserService.create(guestUser2)
+        def created1 = guestUserService.create(guestUser1, false)
+        def created2 = guestUserService.create(guestUser2, false)
 
         then:
-        created1 == true
-        created2 == false
+        created1 != null
+        created2 == null
         ldapTemplate.lookup(_ as Name) >> { throw new NameNotFoundException("test") } >> null
         1 * ldapTemplate.create(_ as GuestUser)
+        1 * smsService.sendSms(_ as String, _ as String) >> ">true<"
     }
 
     def "Update GuestUser"() {

@@ -8,10 +8,12 @@ class GuestUserObjectServiceSpec extends Specification {
 
     private configService
     private guestUserObjectService
+    private passwordService
 
     void setup() {
         configService = new ConfigService(todaysGuestContainer: "o=gjest", histGuestContainer: "o=hist")
-        guestUserObjectService = new GuestUserObjectService(configService: configService)
+        passwordService = new PasswordService()
+        guestUserObjectService = new GuestUserObjectService(configService: configService, passwordService: passwordService)
     }
 
     def "Setup GuestUser object with mandatory attributes set"() {

@@ -1,4 +1,7 @@
-defaultTasks 'guest-user-portal-backend:clean',
+defaultTasks 'guest-user-portal-frontend:clean',
+        'guest-user-portal-frontend:install_frontend',
+        'guest-user-portal-frontend:webjar',
+        'guest-user-portal-backend:clean',
         'guest-user-portal-backend:build'
 group 'no.rogfk'
 version '0.0.1-SNAPSHOT'

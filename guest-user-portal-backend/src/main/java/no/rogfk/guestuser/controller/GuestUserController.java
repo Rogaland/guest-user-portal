@@ -36,16 +36,23 @@ public class GuestUserController {
         if (guestUserCreateStatus != null) {
             return ResponseEntity.status(HttpStatus.CREATED).body(guestUserCreateStatus);
         }
+        else {
+            guestUserCreateStatus = new GuestUserCreateStatus();
+            guestUserCreateStatus.setErrorMessage("Du er allerede registrert som gjest.");
+            guestUserCreateStatus.setTimeout(5);
+            return ResponseEntity.status(HttpStatus.FOUND).body(guestUserCreateStatus);
+        }
 
-        throw new GuestAllreadyRegisteredException("Du er allerede registrert som gjest.");
-
+        //throw new GuestAllreadyRegisteredException("Du er allerede registrert som gjest.");
 
     }
 
+    /*
     @ExceptionHandler(GuestAllreadyRegisteredException.class)
     public ResponseEntity handleGuestAllreadyRegisteredFound(Exception e) {
         return ResponseEntity.status(HttpStatus.FOUND).body(new ErrorResponse(e.getMessage()));
     }
+    */
 
 
 }

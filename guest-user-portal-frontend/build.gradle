@@ -4,21 +4,22 @@
 //}
 //
 //
-//apply plugin: 'java'
-//apply plugin: 'maven'
-//
-//defaultTasks 'clean', 'grunt_build', 'webjar'
-//
-//task webjar(type: Jar, dependsOn: "jar") {
-//  from(fileTree('dist')) {
-//    into 'META-INF/resources'
-//  }
-//}
-//
-//clean {
-//  delete 'dist'
-//}
-//
-//task bowerInstall(type:Exec){
-//  commandLine './node_modules/bower/bin/bower', 'install'
-//}
+apply plugin: 'java'
+apply plugin: 'maven'
+
+defaultTasks 'clean', 'install_frontend', 'webjar'
+
+task webjar(type: Jar, dependsOn: "jar") {
+  from(fileTree('dist')) {
+    into 'META-INF/resources'
+  }
+}
+
+clean {
+  delete 'dist'
+}
+
+task install_frontend(type:Exec){
+  commandLine 'npm', 'install'
+  commandLine './node_modules/.bin/ng', 'build',  '--prod'
+}
