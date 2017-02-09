@@ -15,7 +15,7 @@ export class GuestConfirmationComponent implements OnDestroy, OnInit {
     private route: ActivatedRoute) { }
 
   get confirmationResult() {
-    return this.formDataService.confirmationResult;
+    return this.formDataService.confirmationResult || {};
   }
 
   get formData(): FormData {
@@ -33,7 +33,7 @@ export class GuestConfirmationComponent implements OnDestroy, OnInit {
 
   ngOnInit(): void {
     const result = this.confirmationResult;
-    if (result.timeout) {
+    if (result && result.timeout) {
       window.setTimeout(() => this.next(), result.timeout * 1000);
     }
   }

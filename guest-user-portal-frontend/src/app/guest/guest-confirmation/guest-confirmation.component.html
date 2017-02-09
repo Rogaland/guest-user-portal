@@ -1,13 +1,13 @@
 <div class="text-center">
     <h3>Velkommen</h3>
     <p>
-        {{confirmationResult.message}}
-    </p>
-    <p *ngIf="confirmationResult.hostNotifyStatus && confirmationResult.hostNotifyStatus !== 'NOTIFIED'">
-        Vi fikk ikke kontakt med den du skal besøke. Vennligst gå til resepsjonen.
+        {{confirmationResult.hostMessage}}
     </p>
     <p>
-        Du vil få en SMS med påloggingsinformasjon til trådløst nettverk.
+        {{confirmationResult.guestMessage}}
+    </p>
+    <p>
+        {{confirmationResult.errorMessage}}
     </p>
     <div class="form-group" style="margin-top: 30px;">
         <div class="col-xs-6 col-xs-offset-3">

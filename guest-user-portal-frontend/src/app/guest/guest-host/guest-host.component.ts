@@ -28,13 +28,14 @@ export class GuestHostComponent {
   save() {
     this.formDataService.create().subscribe(result => {
       this.formDataService.confirmationResult = result;
-      this.router.navigate(['/confirmation', result]);
+      this.router.navigate(['/confirmation']);
     },
       err => {
         const body = JSON.parse(err._body);
         if (err.status === 302) {
+          this.formDataService.confirmationResult = body;
           // User is registered already. Proceed to confirmation page.
-          this.router.navigate(['/confirmation', {}]);
+          this.router.navigate(['/confirmation']);
         }
         this.errorMessage = body.message;
       });
