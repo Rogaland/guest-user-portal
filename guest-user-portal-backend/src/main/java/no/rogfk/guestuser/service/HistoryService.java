@@ -15,7 +15,7 @@ import java.util.List;
 public class HistoryService {
 
     @Autowired
-    no.rogfk.guestuser.service.GuestUserService guestUserService;
+    GuestUserService guestUserService;
 
     public void historizeAllGuests() {
         List<GuestUser> guestUsers = guestUserService.getTodaysGuests();
