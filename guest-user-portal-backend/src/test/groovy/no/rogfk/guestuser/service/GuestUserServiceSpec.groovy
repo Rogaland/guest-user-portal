@@ -35,8 +35,8 @@ class GuestUserServiceSpec extends Specification {
         def guestUser2 = new GuestUser(mobile: "11111111")
 
         when:
-        def created1 = guestUserService.create(guestUser1, false, notifyGuest)
-        def created2 = guestUserService.create(guestUser2, false, notifyGuest)
+        def created1 = guestUserService.create(guestUser1, false, true)
+        def created2 = guestUserService.create(guestUser2, false, false)
 
         then:
         created1 != null

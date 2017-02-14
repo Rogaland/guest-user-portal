@@ -36,13 +36,16 @@ public class GuestUserService {
         searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
     }
 
-    public GuestUserCreateStatus create(GuestUser guestUser, boolean notifyHost, Boolean notifyGuest) {
+    public GuestUserCreateStatus create(GuestUser guestUser, boolean notifyHost, boolean notifyGuest) {
         GuestUserCreateStatus guestUserCreateStatus = new GuestUserCreateStatus();
 
         guestUserObjectService.setupTodaysGuestUser(guestUser);
 
         if (!exists(guestUser.getDn())) {
             ldapTemplate.create(guestUser);
+        }
+        else {
+            return null;
         }
 
         if (notifyGuest) {
