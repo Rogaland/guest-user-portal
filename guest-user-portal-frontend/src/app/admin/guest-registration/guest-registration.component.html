@@ -47,7 +47,7 @@
       <div class="form-group">
         <label for="dateOfVisit" class="col-sm-3 control-label">Besøksdato</label>
         <div class="col-sm-9">
-          <input type="text" disabled="disabled" class="form-control" name="dateOfVisit" placeholder="Besøksdato" required value="{{ today | date}}">
+          <input type="text" disabled="disabled" class="form-control" name="dateOfVisit" placeholder="Besøksdato" required value="{{ today | date: 'dd.MM.yyyy'}}">
         </div>
       </div>
 
