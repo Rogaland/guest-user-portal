@@ -3,7 +3,7 @@ package no.rogfk.guestuser.service
 import no.rogfk.guestuser.model.GuestUser
 import spock.lang.Specification
 
-class HistoryServiceSpoc extends Specification {
+class HistoryServiceSpec extends Specification {
 
     private historyService
     private guestUserService

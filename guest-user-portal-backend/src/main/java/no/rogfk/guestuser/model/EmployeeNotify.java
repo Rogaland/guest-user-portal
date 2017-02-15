@@ -1,6 +1,7 @@
 package no.rogfk.guestuser.model;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.ldap.odm.annotations.Attribute;
 import org.springframework.ldap.odm.annotations.Entry;
@@ -8,7 +9,6 @@ import org.springframework.ldap.odm.annotations.Id;
 
 import javax.naming.Name;
 
-@Data
 @Entry(objectClasses = {"inetOrgPerson", "organizationalPerson", "person", "top", "brfkInfo"})
 public final class EmployeeNotify {
 
@@ -21,6 +21,26 @@ public final class EmployeeNotify {
 
     @Attribute(name = "mobile")
     private String mobile;
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setDn(Name dn) {
+        this.dn = dn;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
 
     public String getDn() {
         return dn.toString();
