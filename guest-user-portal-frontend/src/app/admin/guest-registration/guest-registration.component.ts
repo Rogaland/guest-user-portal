@@ -48,4 +48,8 @@ export class GuestRegistrationComponent {
     }
   }
 
+  selected(dn: EmployeeSearch) {
+    this.guestUser.owner = dn.dn;
+  }
+
 }
