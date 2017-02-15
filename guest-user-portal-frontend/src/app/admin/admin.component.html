@@ -2,6 +2,13 @@
   <div class="col-xs-12">
     <app-admin-navbar></app-admin-navbar>
   </div>
+  <div class="col-xs-12" *ngIf="isRegistered">
+    <div class="alert alert-success">
+      <p>
+        Gjesten er allerede registrert.
+      </p>
+    </div>
+  </div>
   <div class="col-xs-12">
     <router-outlet></router-outlet>
   </div>

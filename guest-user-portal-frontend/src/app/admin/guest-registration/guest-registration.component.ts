@@ -33,7 +33,7 @@ export class GuestRegistrationComponent {
         const body = JSON.parse(err._body);
         if (err.status === 302) {
           // User is registered already. Proceed to confirmation page.
-          this.router.navigate(['/admin']);
+          this.router.navigate(['/admin'], { queryParams: { alreadyRegistered: true } });
         }
       });
   }

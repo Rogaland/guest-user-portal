@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-admin',
@@ -6,11 +7,19 @@ import { Component, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./admin.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class AdminComponent  {
+export class AdminComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  private isRegistered: boolean;
+  private sub: any;
+  constructor(private route: ActivatedRoute) {}
 
-  newGuest() {
-    console.log('create new guest');
+  ngOnInit() {
+    this.sub = this.route.queryParams.subscribe(params => {
+      this.isRegistered = params['alreadyRegistered'] === 'true';
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }
