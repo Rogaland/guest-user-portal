@@ -7,8 +7,7 @@ import org.springframework.ldap.core.LdapTemplate
 import org.springframework.ldap.support.LdapNameBuilder
 import spock.lang.Specification
 
-import javax.lang.model.element.Name
-
+import javax.naming.ldap.LdapName
 
 class EmployeeNotifyServiceSpec extends Specification {
 
@@ -32,8 +31,8 @@ class EmployeeNotifyServiceSpec extends Specification {
         employeeNotifyService.notifyEmployee("cn=ola", "Per Svendsen", guestUserCreateStatus)
 
         then:
-        1 * ldapTemplate.findByDn(_ as Name, _ as EmployeeNotify) >> new EmployeeNotify(dn: LdapNameBuilder.newInstance("cn=dn1").build(), fullname: "Per Svendsen", mobile: "99999999")
-
+        1 * ldapTemplate.findByDn(_ as LdapName, _ as Class) >> new EmployeeNotify(dn: LdapNameBuilder.newInstance("cn=dn1").build(), fullname: "Per Svendsen", mobile: "99999999")
+        1 * smsService.sendSms(_ as String, _ as String) >> '>true<'
 
     }
 }
