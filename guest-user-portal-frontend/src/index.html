@@ -4,14 +4,16 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <title>Rogaland fylkeskommune</title>
-  <base href="/">
-
+  <!--<base href="./"> removed because electron -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <div class="container">
+  <div class="container" style="background: white;">
     <app-root>Loading...</app-root>
   </div>
+  <script>
+    var electron = require('electron');
+  </script>
 </body>
 </html>

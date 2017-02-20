@@ -1,5 +1,5 @@
 import {GuestUser} from '../guest-user';
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { GuestUserService } from '../guest-user.service';
 import { Router } from '@angular/router';
 
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class GuestVisitorComponent {
 
   constructor(private guestUserService: GuestUserService,
-    private router: Router) { }
+    private router: Router) {}
 
   get guestUser(): GuestUser {
     return this.guestUserService.getData();

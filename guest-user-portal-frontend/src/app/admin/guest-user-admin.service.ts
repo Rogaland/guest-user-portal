@@ -1,3 +1,4 @@
+import { ConfigService } from '../config.service';
 import { GuestUserAdmin } from './guest-user-admin';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
@@ -12,8 +13,10 @@ export class GuestUserAdminService {
   private _guestsHistorical: number;
   public dataManipulated: EventEmitter<any> = new EventEmitter<any>();
 
-  private baseUrl: string = '/api/admin/guest';
-  constructor(private http: Http) {
+  private baseUrl: string;
+  constructor(private http: Http,
+    private config: ConfigService) {
+    this.baseUrl = this.config.baseUrl + 'api/admin/guest'
    }
 
   get guests() {

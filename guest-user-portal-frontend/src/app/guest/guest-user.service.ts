@@ -1,3 +1,4 @@
+import { ConfigService } from '../config.service';
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { GuestUser } from './guest-user';
@@ -12,7 +13,7 @@ export class GuestUserService {
     private guestUser: GuestUser = new GuestUser();
     private _confirmationResult: any;
 
-    constructor(private http: Http) {};
+    constructor(private http: Http, private config: ConfigService) {};
 
     set confirmationResult(co: any) {
         this._confirmationResult = co;
@@ -35,7 +36,7 @@ export class GuestUserService {
 
     create(notifyHost: boolean, notifyGuest: boolean, user: GuestUser): Observable<GuestUser> {
         const data = { 'notifyHost': notifyHost, 'notifyGuest': notifyGuest };
-        const url = '/api/guest/user?' + this.toParam(data);
+        const url = this.config.baseUrl + 'api/guest/user?' + this.toParam(data);
         const u = user || this.guestUser;
         return this.http
             .post(url, u)

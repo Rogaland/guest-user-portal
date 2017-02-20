@@ -1,6 +1,7 @@
 {
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "version": "1.0.0-beta.28.3",
+    "version": "1.0.0-beta.32.3",
     "name": "guest-user-portal-frontend"
   },
   "apps": [
@@ -20,11 +21,16 @@
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.css",
         "styles.css",
-         "../node_modules/font-awesome/css/font-awesome.css"
+         "../node_modules/font-awesome/css/font-awesome.css",
+         "../src/assets/css/flat-admin.css",
+         "../src/assets/css/theme/blue-sky.css",
+         "../src/assets/css/theme/blue.css",
+         "../src/assets/css/theme/red.css",
+         "../src/assets/css/theme/yellow.css"
       ],
-      "scripts": [],
+      "scripts": ["../src/assets/js/dymo.label.framwork.2.0.js"],
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
       }
@@ -65,8 +71,5 @@
       "pipe": true,
       "service": true
     }
-  },
-  "addons": [
-    "../node_modules/font-awesome/fonts/*.+(otf|eot|svg|ttf|woff|woff2)"
-  ]
+  }
 }

@@ -1,3 +1,4 @@
+import { ConfigService } from './config.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -18,7 +19,7 @@ import { GuestModule } from './guest/guest.module';
     AppRoutingModule,
     GuestModule
   ],
-  providers: [],
+  providers: [ConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

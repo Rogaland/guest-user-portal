@@ -15,7 +15,7 @@ const routes: Routes = [
   imports: [
     GuestModule,
     AdminModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, { useHash: true })
   ],
   exports: [RouterModule],
   providers: []

@@ -1,3 +1,4 @@
+import { ConfigService } from '../config.service';
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { EmployeeSearch } from './employee-search';
@@ -8,10 +9,11 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class EmployeeSearchService {
 
-  constructor(private http: Http) { }
+  constructor(private http: Http,
+  private config: ConfigService) { }
 
   findUsers(name: string): Observable<EmployeeSearch[]> {
-      let url = '/api/employee?q=' + name;
+      let url = this.config.baseUrl + 'api/employee?q=' + name;
       return this.http
         .get(url)
         .map(res => res.json()).catch(this.handleError);

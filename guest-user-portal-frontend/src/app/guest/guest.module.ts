@@ -1,3 +1,4 @@
+import { PrintService } from './print/print.service';
 import { GuestUserService } from './guest-user.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -16,6 +17,6 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   declarations: [GuestComponent, GuestVisitorComponent, GuestNavbarComponent, GuestHostComponent, GuestConfirmationComponent],
-  providers: [GuestUserService]
+  providers: [GuestUserService, PrintService]
 })
 export class GuestModule { }

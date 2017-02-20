@@ -1,52 +1,48 @@
-<div class="row">
-<div class="col-sm-7 col-sm-offset-2">
-  <form id="signup-form" name="signup" class="form-horizontal" #f="ngForm" autocomplete="off">
-    <div class="form-group">
-      <label for="firstName" class="col-sm-3 control-label">Fornavn</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" name="firstName" [(ngModel)]="guestUser.firstName"
-               placeholder="Skriv inn fornavnet ditt"
-               required #firstName="ngModel">
-        <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)" class="alert alert-danger">
-          <div [hidden]="!firstName.errors.required">
-            Du må skrive inn navnet ditt.
-          </div>
+<div class="row" class="hidden-print">
+  <div class="col-sm-7 col-sm-offset-2">
+    <form id="signup-form" name="signup" class="form-horizontal" #f="ngForm" autocomplete="off">
+      <div class="form-group">
+        <label for="firstName" class="col-sm-3 control-label">Fornavn</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="firstName" [(ngModel)]="guestUser.firstName" placeholder="Skriv inn fornavnet ditt"
+            required #firstName="ngModel">
+            <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+              <div [hidden]="!firstName.errors.required">
+                Du må skrive inn navnet ditt.
+              </div>
+            </div>
         </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="lastName" class="col-sm-3 control-label">Etternavn</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" name="lastName" [(ngModel)]="guestUser.lastName"
-               placeholder="Skriv inn etternavnet ditt"
-               required #lastName="ngModel">
-        <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)" class="alert alert-danger">
-          <div [hidden]="!lastName.errors.required">
-            Du må skrive inn navnet ditt.
-          </div>
+      <div class="form-group">
+        <label for="lastName" class="col-sm-3 control-label">Etternavn</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="lastName" [(ngModel)]="guestUser.lastName" placeholder="Skriv inn etternavnet ditt"
+            required #lastName="ngModel">
+            <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)" class="alert alert-danger">
+              <div [hidden]="!lastName.errors.required">
+                Du må skrive inn navnet ditt.
+              </div>
+            </div>
         </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="organization" class="col-sm-3 control-label">Organisasjon</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" name="org" [(ngModel)]="guestUser.organization"
-               placeholder="Skriv inn navnet på organisasjonen du kommer fra"
-               required #organization="ngModel">
-        <div *ngIf="organization.errors && (organization.dirty || organization.touched)" class="alert alert-danger">
-          <div [hidden]="!organization.errors.required">
-            Du må skrive inn navnet på organisasjonen din.
-          </div>
+      <div class="form-group">
+        <label for="organization" class="col-sm-3 control-label">Organisasjon</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="org" [(ngModel)]="guestUser.organization" placeholder="Skriv inn navnet på organisasjonen du kommer fra"
+            required #organization="ngModel">
+            <div *ngIf="organization.errors && (organization.dirty || organization.touched)" class="alert alert-danger">
+              <div [hidden]="!organization.errors.required">
+                Du må skrive inn navnet på organisasjonen din.
+              </div>
+            </div>
         </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="mobile" class="col-sm-3 control-label">Mobil</label>
-      <div class="col-sm-9">
-        <input type="tel" class="form-control" name="mobile" [(ngModel)]="guestUser.mobile"
-               placeholder="Skriv inn mobiltelefonnummeret ditt"
-               required minlength="8" maxlength="8" #mobile="ngModel">
-        <!--<div *ngIf="mobile.errors && (mobile.dirty || mobile.touched)" class="alert alert-danger">
+      <div class="form-group">
+        <label for="mobile" class="col-sm-3 control-label">Mobil</label>
+        <div class="col-sm-9">
+          <input type="tel" class="form-control" name="mobile" [(ngModel)]="guestUser.mobile" placeholder="Skriv inn mobiltelefonnummeret ditt"
+            required minlength="8" maxlength="8" #mobile="ngModel">
+            <!--<div *ngIf="mobile.errors && (mobile.dirty || mobile.touched)" class="alert alert-danger">
            <div [hidden]="!mobile.errors.required">
                 Du må skrive inn mobiltelefonnummeret ditt (8 siffer)
            </div>
@@ -54,9 +50,9 @@
                Du må skrive inn mobiltelefonnummeret ditt (8 siffer).
            </div>
        </div>-->
+        </div>
       </div>
-    </div>
-    <!--<div class="form-group">
+      <!--<div class="form-group">
         <label for="email" class="col-sm-3 control-label">Epost</label>
         <div class="col-sm-9">
             <input type="email" class="form-control" name="email" [(ngModel)]="guestUser.mail" placeholder="Skriv inn epost adressen din"
@@ -69,12 +65,12 @@
         </div>
     </div>-->
 
-    <div class="form-group" style="margin-top: 30px;">
-      <div class="col-xs-9 col-xs-offset-3">
-        <button (click)="next()" [disabled]="!f.valid" class="btn btn-primary btn-block" value="Neste">Neste <span
+      <div class="form-group" style="margin-top: 30px;">
+        <div class="col-xs-9 col-xs-offset-3">
+          <button (click)="next()" type="button" [disabled]="!f.valid" class="btn btn-primary btn-block" value="Neste">Neste <span
           class="glyphicon glyphicon-circle-arrow-right"></span></button>
+        </div>
       </div>
-    </div>
-  </form>
-</div>
+    </form>
+  </div>
 </div>
