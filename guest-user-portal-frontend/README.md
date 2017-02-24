@@ -29,3 +29,23 @@ Run `ng github-pages:deploy` to deploy to GitHub Pages.
 ## Further help
 
 To get more help on the `angular-cli` use `ng help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+# Running with Electron
+To run this application with Electron run `npm run electron <backend url>`
+
+
+# Printing with Dymo LabelWriterPritner
+This solution is set up a Dymo Label printer.
+
+Dependencies:
+* [DYMO Label Software v8](http://download.dymo.com/dymo/Software/Win/DLS8Setup.8.6.exe)
+
+
+For more information: http://developers.dymo.com/2010/06/02/dymo-label-framework-javascript-library-samples-print-a-label/
+
+
+## Troubleshooting
+If no printers are found [this fix might solve it.](https://support.microsoft.com/en-us/help/2954953/some-apis-do-not-work-when-they-are-called-in-services-in-windows)
+
+
+
