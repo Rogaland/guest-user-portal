@@ -12,7 +12,8 @@
     "e2e": "protractor",
     "build-electron": "npm run ng build --base-href . && copy electron\\* dist",
     "electron:local": "npm run build-electron && electron dist\\main.js http://localhost:8080",
-    "electron": "npm run build-electron && electron dist\\main.js"
+    "electron": "npm run build-electron && electron dist\\main.js",
+    "electron:package": "npm run build-electron && copy package.json dist && electron-packager dist --overwrite true --out releases"
   },
   "private": true,
   "dependencies": {

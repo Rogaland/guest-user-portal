@@ -1,5 +1,5 @@
 const electron = require('electron');
-const {app, BrowserWindow, ipcMain, remote} = electron;
+const {app, BrowserWindow} = electron;
 const path = require('path')
 const url = require('url')
 
@@ -7,9 +7,18 @@ const url = require('url')
 // be closed automatically when the JavaScript object is garbage collected.
 let win
 
+function isLocalDebug() {
+  return process.argv[0].indexOf('node_modules') > 0;
+}
+
 function createWindow () {
   // Create the browser window.
-  win = new BrowserWindow({ kiosk: false, frame: true, nodeIntegration: false, width: 1024, height: 768 });
+  var bwOptions = { kiosk: true, frame: false, nodeIntegration: false, width: 1024, height: 768 };
+  if (isLocalDebug()) {
+    bwOptions.kiosk = false;
+    bwOptions.frame = true;
+  }
+  win = new BrowserWindow(bwOptions);
 
   // and load the index.html of the app.
   win.loadURL(url.format({
@@ -18,11 +27,10 @@ function createWindow () {
     slashes: true
   }))
 
-  // win.loadURL(`file://${__dirname}/index.html`)
-  // win.loadURL('http://localhost:4200');
-
   // Open the DevTools.
-  win.webContents.openDevTools()
+  if (isLocalDebug()) {
+    win.webContents.openDevTools()
+  }
 
   // Emitted when the window is closed.
   win.on('closed', () => {
