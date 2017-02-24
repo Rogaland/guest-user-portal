@@ -5,11 +5,11 @@ export class ConfigService {
 
   constructor() { }
 
-  get isElectron(): boolean{
+  get isElectron(): boolean {
     return electron && electron.remote && electron.remote.process;
   }
 
-  get isLocal(): boolean{
+  get isLocal(): boolean {
     if (this.isElectron) {
       return electron.remote.process.argv[0].indexOf('node_modules') > 0;
     }
@@ -30,5 +30,19 @@ export class ConfigService {
       }
     }
     return baseurl;
+  }
+
+  get physicalLocation(): string {
+    let location = 'web';
+    if (this.isElectron) {
+      let urlIndex = 2;
+      if (this.isLocal) {
+        urlIndex = 3;
+      }
+      if (electron.remote.process.argv.length > urlIndex) {
+        location = electron.remote.process.argv[urlIndex];
+      }
+    }
+    return location;
   }
 }

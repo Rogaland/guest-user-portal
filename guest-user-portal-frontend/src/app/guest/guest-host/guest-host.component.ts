@@ -1,3 +1,4 @@
+import { ConfigService } from '../../config.service';
 import { PrintService } from '../print/print.service';
 import {GuestUser} from '../guest-user';
 import { error } from 'util';
@@ -21,13 +22,16 @@ export class GuestHostComponent {
   constructor(private guestUserService: GuestUserService,
     private employeeSearchService: EmployeeSearchService,
     private router: Router,
-    private printService: PrintService) { }
+    private printService: PrintService,
+    private config: ConfigService) { }
 
   get guestUser(): GuestUser {
     return this.guestUserService.getData();
   }
 
   save() {
+    this.guestUser.location = this.config.physicalLocation;
+
     this.guestUserService.create(true, true, null).subscribe(result => {
       this.guestUserService.confirmationResult = result;
       this.printLabel();
