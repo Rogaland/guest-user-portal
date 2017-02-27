@@ -488,7 +488,7 @@ html, body {
 
 body {
   min-height: 100vh;
-  background-color: #e7edee;
+  /*background-color: #e7edee;*/
   overflow-x: hidden; }
   body .app {
     min-height: 100vh; }
