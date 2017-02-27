@@ -50,7 +50,7 @@ export class GuestHostComponent {
   }
 
   printLabel(): void {
-    this.printService.printGuest(this.guestUser.firstName, this.guestUser.lastName);
+    this.printService.printGuest(this.guestUser.firstName, this.guestUser.lastName, this.guestUser.organization);
   }
 
   search() {
