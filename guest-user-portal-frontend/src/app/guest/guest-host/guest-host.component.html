@@ -13,8 +13,10 @@
 
     <div class="form-group">
       <div class="col-xs-12">
-        <button class="btn btn-primary btn-block" (click)="save()" [disabled]="!guestUser.owner">Neste <span
-          class="glyphicon glyphicon-circle-arrow-right"></span></button>
+        <button class="btn btn-primary btn-block" (click)="save()" [disabled]="!guestUser.owner || isLoading">Neste
+          <span *ngIf="!isLoading" class="glyphicon glyphicon-circle-arrow-right"></span>
+          <i *ngIf="isLoading" class="fa fa-spin fa-spinner" aria-hidden="true"></i>
+        </button>
       </div>
     </div>
     <div class="alert alert-danger" *ngIf="errorMessage" role="alert">

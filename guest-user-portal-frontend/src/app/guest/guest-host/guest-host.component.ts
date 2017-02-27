@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 })
 export class GuestHostComponent {
 
+  private isLoading: boolean;
   private visiting: EmployeeSearch[];
   private searchField: string;
   private errorMessage: string;
@@ -30,11 +31,13 @@ export class GuestHostComponent {
   }
 
   save() {
+    this.isLoading = true;
     this.guestUser.location = this.config.physicalLocation;
 
     this.guestUserService.create(true, true, null).subscribe(result => {
       this.guestUserService.confirmationResult = result;
       this.printLabel();
+      this.isLoading = false;
       this.router.navigate(['/confirmation']);
     },
       err => {
@@ -46,6 +49,7 @@ export class GuestHostComponent {
           this.router.navigate(['/confirmation']);
         }
         this.errorMessage = body.message;
+        this.isLoading = false;
       });
   }
 
