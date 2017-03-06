@@ -43,8 +43,7 @@ public class GuestUserService {
 
         if (!exists(guestUser.getDn())) {
             ldapTemplate.create(guestUser);
-        }
-        else {
+        } else {
             return null;
         }
 
