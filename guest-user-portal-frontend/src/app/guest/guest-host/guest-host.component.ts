@@ -32,7 +32,7 @@ export class GuestHostComponent {
 
   save() {
     this.isLoading = true;
-    this.guestUser.location = this.config.physicalLocation;
+    this.guestUser.physicalVisitLocation = this.config.physicalLocation;
 
     this.guestUserService.create(true, true, null).subscribe(result => {
       this.guestUserService.confirmationResult = result;

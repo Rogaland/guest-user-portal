@@ -5,5 +5,5 @@ export class GuestUser {
     mobile: string;
     mail: string;
     owner: string;
-    location: string;
+    physicalVisitLocation: string;
 }
