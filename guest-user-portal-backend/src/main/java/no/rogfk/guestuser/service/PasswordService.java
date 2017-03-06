@@ -12,7 +12,7 @@ public class PasswordService {
         String alpha = RandomStringUtils.randomAlphabetic(4);
         String alphaLowerCase = RandomStringUtils.randomAlphabetic(1).toLowerCase();
         String alphaUpperCase = RandomStringUtils.randomAlphabetic(1).toUpperCase();
-        String numeric = RandomStringUtils.random(2, false,true);
+        String numeric = RandomStringUtils.random(2, false, true);
         String password = alphaLowerCase + alpha + alphaUpperCase + numeric;
         log.info(password);
 

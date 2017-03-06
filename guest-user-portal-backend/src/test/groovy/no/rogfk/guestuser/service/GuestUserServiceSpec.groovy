@@ -8,6 +8,7 @@ import org.springframework.ldap.support.LdapNameBuilder
 import spock.lang.Specification
 
 import javax.naming.Name
+import javax.naming.directory.SearchControls
 
 class GuestUserServiceSpec extends Specification {
     private configService
@@ -78,33 +79,30 @@ class GuestUserServiceSpec extends Specification {
     }
 
     def "Get todays guests"() {
-        given:
-        true
-
         when:
-        true
+        def all = guestUserService.getTodaysGuests()
+
         then:
-        true
+        all.size() == 2
+        1 * ldapTemplate.findAll(_ as Name, _ as SearchControls, _ as Object) >> Arrays.asList(new GuestUser(), new GuestUser())
     }
 
     def "Get historical guests"() {
-        given:
-        true
-
         when:
-        true
+        def all = guestUserService.getHistoricalGuests()
+
         then:
-        true
+        all.size() == 2
+        1 * ldapTemplate.findAll(_ as Name, _ as SearchControls, _ as Object) >> Arrays.asList(new GuestUser(), new GuestUser())
     }
 
     def "Get all guests"() {
-        given:
-        true
-
         when:
-        true
+        def all = guestUserService.getAllGuests()
+
         then:
-        true
+        all.size() == 2
+        1 * ldapTemplate.findAll(_ as Name, _ as SearchControls, _ as Object) >> Arrays.asList(new GuestUser(), new GuestUser())
     }
 
     def "GuestUser exists"() {
@@ -112,8 +110,13 @@ class GuestUserServiceSpec extends Specification {
         true
 
         when:
-        true
+        def exists1 = guestUserService.exists("o=rfk")
+        def exists2 = guestUserService.exists("o=rfk")
+
         then:
-        true
+        exists1 == false
+        exists2 == true
+        2 * ldapTemplate.lookup(_ as Name) >> { throw new NameNotFoundException("test") } >> null
+
     }
 }

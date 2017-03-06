@@ -46,6 +46,9 @@ public class GuestUser {
     @Attribute(name = "brfkOwner")
     private Name owner;
 
+    @Attribute(name = "brfkGuestPhysicalVisitLocation")
+    private String physicalVisitLocation;
+
     @ApiModelProperty(value = "This will be automatically set", hidden = true)
     @Attribute(name = "loginDisabled")
     private boolean loginDisabled;
@@ -69,6 +72,7 @@ public class GuestUser {
         newGuestUser.setMobile(guestUser.getMobile());
         newGuestUser.setOrganization(guestUser.getOrganization());
         newGuestUser.setOwner(guestUser.getOwner());
+        newGuestUser.setPhysicalVisitLocation(guestUser.getPhysicalVisitLocation());
 
         return newGuestUser;
     }
@@ -167,5 +171,13 @@ public class GuestUser {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPhysicalVisitLocation() {
+        return physicalVisitLocation;
+    }
+
+    public void setPhysicalVisitLocation(String physicalVisitLocation) {
+        this.physicalVisitLocation = physicalVisitLocation;
     }
 }

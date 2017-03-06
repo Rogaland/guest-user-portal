@@ -54,8 +54,7 @@ public class EmployeeNotifyService {
                 );
                 guestUserCreateStatus.setTimeout(20);
             }
-        }
-        catch (ResourceAccessException e) {
+        } catch (ResourceAccessException e) {
             guestUserCreateStatus.setGuestNotifyStatus(NotifyStatus.UNABLE_TO_NOTIFY);
             guestUserCreateStatus.setHostMessage(
                     String.format(configService.getUnableToNotifyHostMessage(), employeeNotify.getFullname())

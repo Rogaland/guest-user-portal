@@ -3,8 +3,6 @@ package no.rogfk.guestuser.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import no.rogfk.guestuser.exception.GuestAllreadyRegisteredException;
-import no.rogfk.guestuser.model.ErrorResponse;
 import no.rogfk.guestuser.model.GuestUser;
 import no.rogfk.guestuser.model.GuestUserCreateStatus;
 import no.rogfk.guestuser.service.GuestUserService;
@@ -36,8 +34,7 @@ public class GuestUserController {
         GuestUserCreateStatus guestUserCreateStatus = guestUserService.create(guestUser, notifyHost, notifyGuest);
         if (guestUserCreateStatus != null) {
             return ResponseEntity.status(HttpStatus.CREATED).body(guestUserCreateStatus);
-        }
-        else {
+        } else {
             guestUserCreateStatus = new GuestUserCreateStatus();
             guestUserCreateStatus.setErrorMessage("Du er allerede registrert som gjest.");
             guestUserCreateStatus.setTimeout(5);
