@@ -1,10 +1,8 @@
 package no.rogfk.guestuser.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import no.rogfk.guestuser.utilities.LdapDateStringToDateDeserializer;
 import no.rogfk.guestuser.utilities.LdapDateStringToDateSerializer;
 import org.springframework.ldap.odm.annotations.Attribute;
 import org.springframework.ldap.odm.annotations.Entry;
@@ -56,7 +54,6 @@ public class GuestUser {
     @Attribute(name = "brfkGuestDateOfVisit")
     @ApiModelProperty(value = "This will be automatically generated", hidden = true)
     @JsonSerialize(using = LdapDateStringToDateSerializer.class)
-    @JsonDeserialize(using = LdapDateStringToDateDeserializer.class)
     private String dateOfVisit;
 
     public static GuestUser newInstance(GuestUser guestUser) {
