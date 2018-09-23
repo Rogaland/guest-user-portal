@@ -13,9 +13,9 @@ import { Router } from '@angular/router';
 })
 export class GuestHostComponent {
 
-  private visiting: EmployeeSearch[];
-  private searchField: string;
-  private errorMessage: string;
+  public visiting: EmployeeSearch[];
+  public searchField: string;
+  public errorMessage: string;
 
   constructor(private guestUserService: GuestUserService,
     private employeeSearchService: EmployeeSearchService,

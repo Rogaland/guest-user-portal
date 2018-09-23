@@ -8,7 +8,7 @@
                placeholder="Skriv inn fornavnet ditt"
                required #firstName="ngModel">
         <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)" class="alert alert-danger">
-          <div [hidden]="!firstName.errors.required">
+          <div [hidden]="!firstName.errors">
             Du må skrive inn navnet ditt.
           </div>
         </div>
@@ -21,7 +21,7 @@
                placeholder="Skriv inn etternavnet ditt"
                required #lastName="ngModel">
         <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)" class="alert alert-danger">
-          <div [hidden]="!lastName.errors.required">
+          <div [hidden]="!lastName.errors">
             Du må skrive inn navnet ditt.
           </div>
         </div>
@@ -34,7 +34,7 @@
                placeholder="Skriv inn navnet på organisasjonen du kommer fra"
                required #organization="ngModel">
         <div *ngIf="organization.errors && (organization.dirty || organization.touched)" class="alert alert-danger">
-          <div [hidden]="!organization.errors.required">
+          <div [hidden]="!organization.errors">
             Du må skrive inn navnet på organisasjonen din.
           </div>
         </div>
@@ -47,7 +47,7 @@
                placeholder="Skriv inn mobiltelefonnummeret ditt"
                required minlength="8" maxlength="8" #mobile="ngModel">
         <!--<div *ngIf="mobile.errors && (mobile.dirty || mobile.touched)" class="alert alert-danger">
-           <div [hidden]="!mobile.errors.required">
+           <div [hidden]="!mobile.errors">
                 Du må skrive inn mobiltelefonnummeret ditt (8 siffer)
            </div>
             <div [hidden]="!mobile.errors.minlength">
@@ -62,7 +62,7 @@
             <input type="email" class="form-control" name="email" [(ngModel)]="guestUser.mail" placeholder="Skriv inn epost adressen din"
                 required #email="ngModel">
                 <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
-                    <div [hidden]="!email.errors.required">
+                    <div [hidden]="!email.errors">
                          Du må skrive inn din epostadresse.
                     </div>
                 </div>

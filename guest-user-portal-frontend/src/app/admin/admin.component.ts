@@ -9,7 +9,7 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class AdminComponent implements OnInit, OnDestroy {
 
-  private isRegistered: boolean;
+  public isRegistered: boolean;
   private sub: any;
   constructor(private route: ActivatedRoute) {}
 

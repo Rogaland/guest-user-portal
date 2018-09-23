@@ -7,7 +7,7 @@
           <input type="text" class="form-control" name="firstName" [(ngModel)]="guestUser.firstName" placeholder="Fornavn" required
             #firstName="ngModel">
             <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)" class="alert alert-danger">
-              <div [hidden]="!firstName.errors.required">
+              <div [hidden]="!firstName.errors">
                 Du må skrive et fornavn.
               </div>
             </div>
@@ -19,7 +19,7 @@
           <input type="text" class="form-control" name="lastName" [(ngModel)]="guestUser.lastName" placeholder="Etternavn" required
             #lastName="ngModel">
             <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)" class="alert alert-danger">
-              <div [hidden]="!lastName.errors.required">
+              <div [hidden]="!lastName.errors">
                 Du må skrive et etternavn.
               </div>
             </div>
@@ -31,7 +31,7 @@
           <input type="text" class="form-control" name="org" [(ngModel)]="guestUser.organization" placeholder="Organisasjon" required
             #organization="ngModel">
             <div *ngIf="organization.errors && (organization.dirty || organization.touched)" class="alert alert-danger">
-              <div [hidden]="!organization.errors.required">
+              <div [hidden]="!organization.errors">
                 Du må skrive navn på organisasjon.
               </div>
             </div>

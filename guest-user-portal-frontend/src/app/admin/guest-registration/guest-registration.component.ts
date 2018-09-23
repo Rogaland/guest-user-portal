@@ -15,10 +15,10 @@ import {IMyDateModel, IMyDpOptions, IMyDate} from 'mydatepicker';
 })
 export class GuestRegistrationComponent {
 
-  private visiting: EmployeeSearch[];
-  private searchField: string;
+  public visiting: EmployeeSearch[];
+  public searchField: string;
   public today: any = GuestRegistrationComponent.getToday();
-  private notifyHost: boolean = false;
+  public notifyHost: boolean = false;
 
   public myDatePickerOptions: IMyDpOptions = {
     // other options...
