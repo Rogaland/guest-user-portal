@@ -9,12 +9,15 @@ import { GuestTodayComponent } from './guest-today/guest-today.component';
 import { GuestHistoricalComponent } from './guest-historical/guest-historical.component';
 import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
 import { GuestRegistrationComponent } from './guest-registration/guest-registration.component';
+import { MyDatePickerModule } from 'mydatepicker';
+
 
 @NgModule({
   imports: [
     CommonModule,
     AdminRoutingModule,
-    FormsModule
+    FormsModule,
+    MyDatePickerModule
   ],
   declarations: [AdminComponent, UserTableComponent, UserTableComponent, GuestTodayComponent,
     GuestHistoricalComponent, AdminNavbarComponent, GuestRegistrationComponent],

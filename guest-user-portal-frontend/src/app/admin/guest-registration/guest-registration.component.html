@@ -47,7 +47,9 @@
       <div class="form-group">
         <label for="dateOfVisit" class="col-sm-3 control-label">Besøksdato</label>
         <div class="col-sm-9">
-          <input type="text" disabled="disabled" class="form-control" name="dateOfVisit" placeholder="Besøksdato" required value="{{ today | date: 'dd.MM.yyyy'}}">
+          <!--<input type="text" class="form-control" name="dateOfVisit" placeholder="Besøksdato" required value="{{ today | date: 'dd.MM.yyyy'}}">-->
+          <my-date-picker name="dateOfVisit" [options]="myDatePickerOptions" locale="no"
+                          [(ngModel)]="today" required (dateChanged)="onDateChanged($event)"></my-date-picker>
         </div>
       </div>
 
