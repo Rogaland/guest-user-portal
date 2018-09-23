@@ -18,5 +18,6 @@ task npm_install(type:Exec){
 }
 task install_frontend(type:Exec){
   dependsOn npm_install
-  commandLine './node_modules/.bin/ng', 'build',  '--prod'
+  commandLine './node_modules/.bin/ng', 'build'
+  //commandLine './node_modules/.bin/ng', 'build',  '--prod'
 }
