@@ -1,4 +1,11 @@
-FROM gradle:4.10.2-jdk8-alpine as builder
-USER root
-COPY . .
-RUN gradle --no-daemon build
+pipeline {
+    agent { label 'docker' }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'git clean -fdx'
+                sh "docker build -t ${GIT_COMMIT} ."
+            }
+        }
+    }
+}
